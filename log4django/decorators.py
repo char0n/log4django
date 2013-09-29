@@ -1,0 +1,6 @@
+from django.utils.decorators import make_middleware_decorator
+
+from .middleware import Log4DjangoAuthenticationMiddleware
+
+
+authenticate = make_middleware_decorator(Log4DjangoAuthenticationMiddleware)

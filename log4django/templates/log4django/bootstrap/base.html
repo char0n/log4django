@@ -1,0 +1,211 @@
+{% load static from staticfiles %}{% load i18n %}{% load l10n %}{% load log4django %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ PAGE_TITLE }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static "log4django/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "log4django/css/log4django.css" %}" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{% static "log4django/assets/js/html5shiv.js" %}"></script>
+      <script src="{% static "log4django/assets/js/respond.min.js" %}"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Fixed navbar -->
+    <div id="navbar" class="navbar navbar-default navbar-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'main_screen' %}">{{ PAGE_TITLE }}</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'main_screen' %}">{% trans "Home" %}</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Export" %}<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'csv_export' %}?{{ request.GET.urlencode }}">CSV</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container-liquid">
+      <div class="row">
+        <div class="col-md-2">
+          <form action="{% url 'main_screen' %}" method="GET" enctype="application/x-www-form-urlencoded" class="form-horizontal" role="form">
+            <div class="well sidebar-nav">
+              <ul class="nav">
+                <li><h4>{% trans "Filters" %}</h4></li>
+                <li class="active">
+                  <div class="form-group">
+                    <select name="app" class="form-control">
+                      <optgroup label="{% trans "App" %}">
+                        <option value="">{% trans "All Apps" %}</option>
+                        {% for app in apps %}
+                          <option value="{{ app.pk|unlocalize }}"{% if app.pk|stringformat:'s' == request.GET.app %} selected="selected"{% endif %}>{{ app }}</option>
+                        {% endfor %}
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select name="logger" class="form-control">
+                      <optgroup label="{% trans "Logger" %}">
+                        <option value="">{% trans "All Loggers" %}</option>
+                        {% for logger in loggers %}
+                          <option value="{{ logger.loggerName }}"{% if logger.loggerName == request.GET.logger %} selected="selected"{% endif %}>{{ logger.loggerName }}</option>
+                        {% endfor %}
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="filterDatetimeFrom">{% trans "From" %}:</label>
+                      <input id="filterDatetimeFrom" name="from" type="datetime-local" class="form-control" value="{{ request.GET.from }}" />
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="filterDatetimeTo">{% trans "To" %}:</label>
+                      <input id="filterDatetimeTo" name="to" type="datetime-local" class="form-control" value="{{ request.GET.to }}" />
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    {% for level in levels %}
+                      {% if forloop.counter0|divisibleby:3 %}<br />{% endif %}
+                      <label class="checkbox-inline">
+                        {% if filter_levels %}
+                          <input type="checkbox" name="level" value="{{ level.0|unlocalize }}"{% if level.0 in filter_levels %} checked="checked"{% endif %} />
+                        {% else %}
+                          <input type="checkbox" name="level" value="{{ level.0|unlocalize }}" checked="checked" />
+                        {% endif %}
+                        <span class="label {% level_css_class level.0|unlocalize %}">{{ level.1 }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <br />
+                    <button type="submit" class="btn btn-default">{% trans "Apply Filters" %}</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-10">
+
+          {% if records.object_list %}
+            {% pagination records %}
+          {% endif %}
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{% trans "Level" %}</th>
+                <th>{% trans "App" %}</th>
+                <th>{% trans "Asctime" %}</th>
+                <th>{% trans "Logger" %}</th>
+                <th>{% trans "Message" %}</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for record in records %}
+                <tr class="accordion-toggle{% cycle ' active' '' %}" data-toggle="collapse" data-target="#recordInfo-{{ record.pk|unlocalize }}">
+                  <td>
+                    <span class="label {% level_css_class record.level %}">{{ record.get_level_display }}</span>
+                  </td>
+                  <td>{{ record.app }}</td>
+                  <td>{{ record.timestamp }}</td>
+                  <td>{{ record.loggerName }}</td>
+                  <td>
+                    <small>{{ record.message|remove_newlines|wordwrap:150|linebreaksbr }}</small>
+                  </td>
+                  <td>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    {% if record.exception_message or record.exception_traceback %}
+                      <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="6" class="log4django-hiddenRow">
+                    <div id="recordInfo-{{ record.pk|unlocalize }}" class="accordian-body collapse">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>{% trans "Filename" %}</th>
+                            <th>{% trans "Linenumber" %}</th>
+                            <th>{% trans "Thread" %}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {% if record.fileName %}
+                                {{ record.fileName }}
+                              {% else %}
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if record.lineNumber != None %}
+                                {{ record.lineNumber }}
+                              {% else %}
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                              {% endif %}
+                            </td>
+                            <td>{{ record.thread }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      {% if record.has_extra %}
+                        <div class="panel panel-info">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">{% trans "Extra data" %}</h3>
+                          </div>
+                          <div class="panel-body">
+                            <pre>{% extra_data record %}</pre>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if record.exception_message or record.exception_traceback %}
+                      <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">{% trans "Exception" %}: {{ record.exception_message }}</h3>
+                        </div>
+                        <div class="panel-body">
+                          <pre>{{ record.exception_traceback }}</pre>
+                        </div>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="6">
+                    {% trans "No records found." %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% if records.object_list %}
+            {% pagination records %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "log4django/js/jquery-1.8.2.min.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "log4django/js/bootstrap.min.js" %}"></script>
+    <!-- Include log4django custom routines -->
+    <script src="{% static "log4django/js/log4django.js" %}"></script>
+  </body>
+</html>

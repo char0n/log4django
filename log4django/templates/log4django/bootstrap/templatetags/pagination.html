@@ -1,0 +1,13 @@
+<ul class="pagination">
+  {% if page.has_previous %}
+    <li><a href="{{ pagination_url }}?page={{ page.previous_page_number }}&{{ getvars.urlencode }}">&laquo;</a></li>
+  {% endif %}
+  {% for page_number in page_range %}
+    <li{% if page.number == page_number %} class="active"{% endif %}>
+      <a href="{{ pagination_url }}?page={{ page_number }}&{{ getvars.urlencode }}">{{ page_number }}</a>
+    </li>
+  {% endfor %}
+  {% if page.has_next %}
+    <li><a href="{{ pagination_url }}?page={{ page.next_page_number }}&{{ getvars.urlencode }}">&raquo;</a></li>
+  {% endif %}
+</ul>
