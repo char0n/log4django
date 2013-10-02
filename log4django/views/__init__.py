@@ -1,6 +1,5 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.response import TemplateResponse
 from django.views.decorators.http import require_GET
 
 from ..models import LogRecord, App
@@ -27,12 +26,14 @@ def main_screen(request):
     try:
         loggers = list(LogRecord.objects.distinct('loggerName').order_by('loggerName').values('loggerName'))
     except NotImplementedError:
-        loggers = set(LogRecord.objects.order_by('loggerName').values('loggerName'))
+        loggers = LogRecord.objects.order_by('loggerName').values('loggerName')
+        loggers = set([r['loggerName'] for r in loggers])
+        loggers = [{'loggerName': ln} for ln in loggers]
     levels = LogRecord.LEVEL
-    return render_to_response('log4django/bootstrap/base.html', RequestContext(request, dict(
+    return TemplateResponse(request, 'log4django/bootstrap/base.html', dict(
         records=records, apps=apps, loggers=loggers, levels=levels,
         filter_levels=[int(l) for l in request.GET.getlist('level')]
-    )))
+    ))
 
 
 def _filter_records(request):

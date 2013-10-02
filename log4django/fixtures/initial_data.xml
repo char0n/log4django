@@ -13,4 +13,274 @@
         <field to="auth.group" name="groups" rel="ManyToManyRel"></field>
         <field to="auth.permission" name="user_permissions" rel="ManyToManyRel"></field>
     </object>
+    <object pk="1" model="log4django.app">
+        <field type="CharField" name="key">698bf47d-7363-4803-972b-ee8d1edb3c5f</field>
+        <field type="CharField" name="name">app</field>
+        <field type="TextField" name="description">testing app</field>
+    </object>
+    <object pk="31985" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:30</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 489.95018, "duration_seconds": 0.0004899501800537109, "duration_miliseconds": 0.48995}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="31986" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:30</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 123.235941 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 123235.940933, "duration_seconds": 0.12323594093322754, "duration_miliseconds": 123.235941}}</field>
+    </object>
+    <object pk="31987" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 516.891479, "duration_seconds": 0.0005168914794921875, "duration_miliseconds": 0.516891}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="31988" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 517.129898, "duration_seconds": 0.0005171298980712891, "duration_miliseconds": 0.51713}, "user": {"ip": "82.113.48.226", "id": "anonymous"}}</field>
+    </object>
+    <object pk="31989" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 104.943991 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 104943.990707, "duration_seconds": 0.10494399070739746, "duration_miliseconds": 104.943991}}</field>
+    </object>
+    <object pk="31990" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 97.131014 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 97131.01387, "duration_seconds": 0.09713101387023926, "duration_miliseconds": 97.131014}}</field>
+    </object>
+    <object pk="31991" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:33</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 456.094742, "duration_seconds": 0.00045609474182128906, "duration_miliseconds": 0.456095}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="31992" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:33</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 125.555038 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 125555.038452, "duration_seconds": 0.12555503845214844, "duration_miliseconds": 125.555038}}</field>
+    </object>
+    <object pk="31993" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:34</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 518.083572, "duration_seconds": 0.0005180835723876953, "duration_miliseconds": 0.518084}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="31994" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:34</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 81.691980 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 81691.980362, "duration_seconds": 0.08169198036193848, "duration_miliseconds": 81.69198}}</field>
+    </object>
+    <object pk="1" model="log4django.app">
+        <field type="CharField" name="key">698bf47d-7363-4803-972b-ee8d1edb3c5f</field>
+        <field type="CharField" name="name">app</field>
+        <field type="TextField" name="description">testing app</field>
+    </object>
+    <object pk="1" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:30</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 489.95018, "duration_seconds": 0.0004899501800537109, "duration_miliseconds": 0.48995}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="2" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:30</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 123.235941 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 123235.940933, "duration_seconds": 0.12323594093322754, "duration_miliseconds": 123.235941}}</field>
+    </object>
+    <object pk="3" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 516.891479, "duration_seconds": 0.0005168914794921875, "duration_miliseconds": 0.516891}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="4" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 517.129898, "duration_seconds": 0.0005171298980712891, "duration_miliseconds": 0.51713}, "user": {"ip": "82.113.48.226", "id": "anonymous"}}</field>
+    </object>
+    <object pk="5" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 104.943991 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 104943.990707, "duration_seconds": 0.10494399070739746, "duration_miliseconds": 104.943991}}</field>
+    </object>
+    <object pk="6" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:31</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 97.131014 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 97131.01387, "duration_seconds": 0.09713101387023926, "duration_miliseconds": 97.131014}}</field>
+    </object>
+    <object pk="7" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:33</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 456.094742, "duration_seconds": 0.00045609474182128906, "duration_miliseconds": 0.456095}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="8" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:33</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 125.555038 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 125555.038452, "duration_seconds": 0.12555503845214844, "duration_miliseconds": 125.555038}}</field>
+    </object>
+    <object pk="9" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:34</field>
+        <field type="TextField" name="message">View requested</field>
+        <field type="TextField" name="fileName">/home/mcat/mcat/src/frontend/contrib/decorators.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">25</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 518.083572, "duration_seconds": 0.0005180835723876953, "duration_miliseconds": 0.518084}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
+    </object>
+    <object pk="10" model="log4django.logrecord">
+        <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
+        <field type="CharField" name="loggerName">profiling.request.catalogue.views.home_screen</field>
+        <field type="PositiveSmallIntegerField" name="level">20</field>
+        <field type="DateTimeField" name="timestamp">2013-09-12T15:07:34</field>
+        <field type="TextField" name="message">request.catalogue.views.home_screen took: 81.691980 ms</field>
+        <field type="TextField" name="fileName">/home/mcat/venv/local/lib/python2.7/site-packages/profiling/__init__.py</field>
+        <field type="PositiveIntegerField" name="lineNumber">150</field>
+        <field type="CharField" name="thread">139878146262784</field>
+        <field type="TextField" name="exception_message"><None></None></field>
+        <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 81691.980362, "duration_seconds": 0.08169198036193848, "duration_miliseconds": 81.69198}}</field>
+    </object>
 </django-objects>
