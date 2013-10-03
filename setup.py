@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 
-from django.utils.version import get_version
-
 from setuptools import setup, find_packages
 
 import log4django
@@ -10,7 +8,7 @@ import log4django
 
 setup(
     name='log4django',
-    version=get_version(log4django.VERSION),
+    version=log4django.get_version(),
     description='log4django is full features logging platform for django applications.',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author=u'Vladimír Gorej',
