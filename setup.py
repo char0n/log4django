@@ -20,6 +20,7 @@ setup(
     license='BSD',
     keywords='logging, django, log, logs',
     packages=find_packages('.'),
+    include_package_data=True,
     install_requires = [
         'Django', 'django-model-utils', 'django-tastypie',
         'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil'

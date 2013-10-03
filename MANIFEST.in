@@ -1,2 +1,5 @@
 include README.rst
 include LICENSE
+recursive-include log4django/fixtures *
+recursive-include log4django/static *
+recursive-include log4django/templates *
