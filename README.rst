@@ -126,4 +126,4 @@ Author
 
 | char0n (Vladimir Gorej, CodeScale)
 | email: gorej@codescale.net
-| web: http://www.codescale.net
+| web: http://www.codescale.net/

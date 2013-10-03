@@ -1,2 +1,4 @@
 /settings.py
 /test.db
+/dist
+/log4django.egg-info
