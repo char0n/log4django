@@ -95,6 +95,19 @@ Configuration
  LOG4DJANGO_CSV_DOWNLOAD_FILE_NAME = 'log4django.csv'
 
 
+**Running asynchronously**
+
+Asynchronous queue is managed by gearman job server (http://gearman.org/). In your logging config use
+`log4django.handlers.GearmanHandler` as handler class. This way web request threads are not blocked by overhead
+of saving a lots of log records to your database backend, but are sent to asynchronous queue insted.
+You will also have to run management command that acts as gearman worker, pops log records from queue
+and saves log records to database asynchronously.
+
+::
+
+ $ python manage.py log4django
+
+
 Development setup
 -----------------
 ::
