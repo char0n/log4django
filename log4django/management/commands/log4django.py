@@ -1,13 +1,11 @@
 import json
 
-from django.utils.dateparse import parse_datetime
 from django.db import transaction
 from django.conf import settings
 
 from django_gearman_commands import GearmanWorkerBaseCommand
 
 from ...settings import GERMAN_TASK_NAME
-from ...models import LogRecord
 from ...pipeline.process_bundle_data import persist_record
 
 
