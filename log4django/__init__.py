@@ -5,7 +5,7 @@ import os
 import subprocess
 
 
-VERSION = (0, 1, 0, 'beta', 3)
+VERSION = (0, 1, 0, 'beta', 4)
 
 ########################
 # Borrowed from django #
