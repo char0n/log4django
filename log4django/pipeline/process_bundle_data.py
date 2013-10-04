@@ -15,7 +15,7 @@ def persist_record_async(data):
 
 
 def persist_record(data):
-    data = copy.copy(data.data)
+    data = copy.copy(data)
     data['timestamp'] = parse_datetime(data['timestamp'])
     LogRecord(**data).save()
     return True
