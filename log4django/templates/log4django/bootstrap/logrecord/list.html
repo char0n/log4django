@@ -1,0 +1,80 @@
+{% extends "log4django/bootstrap/base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load log4django %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-2">
+      <form action="{% url 'log4django:logrecord_list' %}" method="GET" enctype="application/x-www-form-urlencoded" class="form-horizontal" role="form">
+        <div class="well sidebar-nav">
+          <ul class="nav">
+            <li><h4>{% trans "Filters" %}</h4></li>
+            <li class="active">
+              <div class="form-group">
+                <select name="app" class="form-control">
+                  <optgroup label="{% trans "App" %}">
+                    <option value="">{% trans "All Apps" %}</option>
+                    {% for app in apps %}
+                      <option value="{{ app.pk|unlocalize }}"{% if app.pk|stringformat:'s' == request.GET.app %} selected="selected"{% endif %}>{{ app }}</option>
+                    {% endfor %}
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-group">
+                <select name="logger" class="form-control">
+                  <optgroup label="{% trans "Logger" %}">
+                    <option value="">{% trans "All Loggers" %}</option>
+                    {% for logger in loggers %}
+                      <option value="{{ logger.loggerName }}"{% if logger.loggerName == request.GET.logger %} selected="selected"{% endif %}>{{ logger.loggerName }}</option>
+                    {% endfor %}
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="filterDatetimeFrom">{% trans "From" %}:</label>
+                  <input id="filterDatetimeFrom" name="from" type="datetime-local" class="form-control" value="{{ request.GET.from }}" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="filterDatetimeTo">{% trans "To" %}:</label>
+                  <input id="filterDatetimeTo" name="to" type="datetime-local" class="form-control" value="{{ request.GET.to }}" />
+                </label>
+              </div>
+              <div class="form-group">
+                {% for level in levels %}
+                  {% if forloop.counter0|divisibleby:3 %}<br />{% endif %}
+                  <label class="checkbox-inline">
+                    {% if filter_levels %}
+                      <input type="checkbox" name="level" value="{{ level.0|unlocalize }}"{% if level.0 in filter_levels %} checked="checked"{% endif %} />
+                    {% else %}
+                      <input type="checkbox" name="level" value="{{ level.0|unlocalize }}" checked="checked" />
+                    {% endif %}
+                    <span class="label {% level_css_class level.0|unlocalize %}">{{ level.1 }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+              <div class="form-group">
+                <br />
+                <button type="submit" class="btn btn-default">{% trans "Apply Filters" %}</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-10">
+
+      {% if records.object_list %}
+        {% pagination records %}
+      {% endif %}
+
+      {% include "log4django/bootstrap/logrecord/partials/table.html" %}
+
+      {% if records.object_list %}
+        {% pagination records %}
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

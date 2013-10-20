@@ -1,0 +1,11 @@
+{% extends "log4django/bootstrap/base.html" %}
+{% load l10n %}
+
+{% block content %}
+  <table class="table" id="logRecordDetail{{ record.pk|unlocalize }}">
+    {% include "log4django/bootstrap/logrecord/partials/table_head.html" %}
+    <tbody>
+      {% include "log4django/bootstrap/logrecord/partials/table_row.html" with record=record %}
+    </tbody>
+  </table>
+{% endblock %}

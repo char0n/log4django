@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load l10n %}
+{% load log4django %}
+
+<table class="table">
+  {% include "log4django/bootstrap/logrecord/partials/table_head.html" %}
+  <tbody>
+    {% for record in records %}
+      {% cycle 'active' '' as css_classes silent %}
+      {% include "log4django/bootstrap/logrecord/partials/table_row.html" with record=record css_classes=css_classes %}
+    {% empty %}
+      <tr>
+        <td colspan="6">
+          {% trans "No records found." %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

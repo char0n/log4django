@@ -1,0 +1,80 @@
+{% load i18n %}
+{% load l10n %}
+{% load log4django %}
+
+<tr class="accordion-toggle {{ css_classes }}" data-toggle="collapse" data-target="#recordInfo-{{ record.pk|unlocalize }}">
+  <td>
+    <span class="label {% level_css_class record.level %}">{{ record.get_level_display }}</span>
+  </td>
+  <td>{{ record.app }}</td>
+  <td>{{ record.timestamp }}</td>
+  <td>{{ record.loggerName }}</td>
+  <td>
+    <small>{{ record.message|remove_newlines|wordwrap:150|linebreaksbr }}</small>
+  </td>
+  <td>
+    {% if record.has_extra %}
+      <a href="#" title="{% trans "Extra data present" %}"><span class="glyphicon glyphicon-paperclip"></span></a>
+    {% endif %}
+    {% if record.exception_message or record.exception_traceback %}
+      <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
+    {% endif %}
+  </td>
+</tr>
+<tr>
+  <td colspan="6" class="log4django-hiddenRow">
+    <div id="recordInfo-{{ record.pk|unlocalize }}" class="accordian-body collapse">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{% trans "ID" %}</th>
+            <th>{% trans "Filename" %}</th>
+            <th>{% trans "Linenumber" %}</th>
+            <th>{% trans "Thread" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              #<a href="{% url "log4django:logrecord_detail" record.pk %}">{{ record.pk }}</a></td>
+            <td>
+              {% if record.fileName %}
+                {{ record.fileName }}
+              {% else %}
+                <span class="glyphicon glyphicon-remove-circle"></span>
+              {% endif %}
+            </td>
+            <td>
+              {% if record.lineNumber != None %}
+                {{ record.lineNumber }}
+              {% else %}
+                <span class="glyphicon glyphicon-remove-circle"></span>
+              {% endif %}
+            </td>
+            <td>{{ record.thread }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% if record.has_extra %}
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{% trans "Extra data" %}</h3>
+          </div>
+          <div class="panel-body">
+            <pre>{% extra_data record %}</pre>
+          </div>
+        </div>
+      {% endif %}
+      {% if record.exception_message or record.exception_traceback %}
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">{% trans "Exception" %}: {{ record.exception_message }}</h3>
+        </div>
+        <div class="panel-body">
+          <pre>{{ record.exception_traceback }}</pre>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </td>
+</tr>
