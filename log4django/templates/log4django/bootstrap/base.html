@@ -17,15 +17,15 @@
     <div id="navbar" class="navbar navbar-default navbar-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'main_screen' %}">{{ PAGE_TITLE }}</a>
+          <a class="navbar-brand" href="{% url "log4django:main_screen" %}">{{ PAGE_TITLE }}</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'main_screen' %}">{% trans "Home" %}</a></li>
+            <li class="active"><a href="{% url 'log4django:main_screen' %}">{% trans "Home" %}</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Export" %}<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'csv_export' %}?{{ request.GET.urlencode }}">CSV</a></li>
+                <li><a href="{% url 'log4django:csv_export' %}?{{ request.GET.urlencode }}">CSV</a></li>
               </ul>
             </li>
           </ul>
@@ -36,7 +36,7 @@
     <div class="container-liquid">
       <div class="row">
         <div class="col-md-2">
-          <form action="{% url 'main_screen' %}" method="GET" enctype="application/x-www-form-urlencoded" class="form-horizontal" role="form">
+          <form action="{% url 'log4django:main_screen' %}" method="GET" enctype="application/x-www-form-urlencoded" class="form-horizontal" role="form">
             <div class="well sidebar-nav">
               <ul class="nav">
                 <li><h4>{% trans "Filters" %}</h4></li>
@@ -123,7 +123,9 @@
                     <small>{{ record.message|remove_newlines|wordwrap:150|linebreaksbr }}</small>
                   </td>
                   <td>
-                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    {% if record.has_extra %}
+                      <a href="#" title="{% trans "Extra data present" %}"><span class="glyphicon glyphicon-paperclip"></span></a>
+                    {% endif %}
                     {% if record.exception_message or record.exception_traceback %}
                       <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
                     {% endif %}

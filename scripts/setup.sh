@@ -1,7 +1,6 @@
 #!/bin/sh
 
 SETTINGS='settings.py'
-
 cat > $SETTINGS <<EOF
 DEBUG = True
 
@@ -42,7 +41,7 @@ INSTALLED_APPS = (
 STATIC_URL = '/static/'
 
 SECRET_KEY = 'secret_key'
-ROOT_URLCONF = 'log4django.urls'
+ROOT_URLCONF = 'global_urls'
 
 LOGGING = {
     'version': 1,
@@ -64,6 +63,16 @@ LOGGING = {
         }
     }
 }
+
+EOF
+
+URLS='global_urls.py'
+cat > $URLS <<EOF
+from django.conf.urls import patterns, include, url
+
+urlpatterns = patterns('',
+    url(r'^', include('log4django.urls', namespace='log4django', app_name='log4django')),
+)
 
 EOF
 

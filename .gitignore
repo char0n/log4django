@@ -1,4 +1,5 @@
 /settings.py
+/global_urls.py
 /test.db
 /dist
 /log4django.egg-info

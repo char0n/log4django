@@ -71,6 +71,19 @@ In your `settings.py` file:
      }
  }
 
+**Add log4django urls into ROOT_URLCONF.**
+::
+
+
+ urlpatterns = patterns('',
+     ....your other patterns
+     url(r'^', include('log4django.urls', namespace='log4django', app_name='log4django')),
+ )
+
+Defining namespace and app_name is important. Log4Django uses namespacing internally to avoid
+url name collisions.
+
+
 Configuration
 -------------
 
