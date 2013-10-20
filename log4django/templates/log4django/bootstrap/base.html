@@ -135,6 +135,7 @@
                       <table class="table">
                         <thead>
                           <tr>
+                            <th>{% trans "ID" %}</th>
                             <th>{% trans "Filename" %}</th>
                             <th>{% trans "Linenumber" %}</th>
                             <th>{% trans "Thread" %}</th>
@@ -142,6 +143,7 @@
                         </thead>
                         <tbody>
                           <tr>
+                            <td>{{ record.pk }}</td>
                             <td>
                               {% if record.fileName %}
                                 {{ record.fileName }}
