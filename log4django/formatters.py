@@ -2,6 +2,8 @@ import logging
 from datetime import datetime
 
 from django.utils.timezone import make_aware, get_default_timezone
+from django.conf import settings as django_settings
+
 
 import jsonpickle
 
@@ -18,8 +20,13 @@ class BaseFormatter(logging.Formatter):
         """Standard record decorated with extra contextual information."""
         extra = {}
         contextual_extra = set(record.__dict__).difference(set(self.DEFAULT_PROPERTIES))
-        contextual_extra.remove('message')
-        contextual_extra.remove('asctime')
+
+        try:
+            contextual_extra.remove('message')
+            contextual_extra.remove('asctime')
+        except KeyError:
+            pass
+
         for key in contextual_extra:
             extra[key] = getattr(record, key)
         return extra
@@ -33,9 +40,14 @@ class ModelFormatter(BaseFormatter):
         if LogRecord is None:
             from .models import LogRecord
         # Basic record data.
+
+        timestamp = datetime.fromtimestamp(record.created)
+        if django_settings.USE_TZ:
+            timestamp = make_aware(timestamp, get_default_timezone())
+
         log_record = LogRecord(
             loggerName=record.name, level=record.levelno,
-            timestamp=make_aware(datetime.fromtimestamp(record.created), get_default_timezone()),
+            timestamp=timestamp,
             message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
             thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID)
         )
