@@ -21,7 +21,8 @@ setup(
     include_package_data=True,
     install_requires = [
         'Django', 'django-model-utils', 'django-tastypie',
-        'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil'
+        'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil',
+        'django-log-request-id'
     ],
     extras_require = {
         'gearman': ['gearman==dev', 'django-gearman-commands==dev'],
@@ -43,6 +44,6 @@ setup(
     ],
     dependency_links = [
         'git+git://github.com/Yelp/python-gearman.git#egg=gearman-dev',
-        'git+git://github.com/CodeScaleInc/django-gearman-commands.git#egg=django_gearman_commands-dev'
+        'git+git://github.com/CodeScaleInc/django-gearman-commands.git#egg=django_gearman_commands-dev',
     ]
 )
