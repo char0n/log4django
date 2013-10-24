@@ -28,6 +28,7 @@ class LogRecord(models.Model):
     thread = models.CharField(max_length=225, blank=True, null=True)
     exception_message = models.TextField(blank=True, null=True)
     exception_traceback = models.TextField(blank=True, null=True)
+    request_id = models.TextField(blank=True, null=True)
     _extra = models.TextField(default='{}')
 
     @property

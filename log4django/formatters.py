@@ -49,7 +49,8 @@ class ModelFormatter(BaseFormatter):
             loggerName=record.name, level=record.levelno,
             timestamp=timestamp,
             message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
-            thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID)
+            thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID),
+            request_id=record.request_id
         )
         # Exception data if available.
         if record.exc_info is not None:
