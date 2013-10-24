@@ -3,6 +3,7 @@
 {% load log4django %}
 
 <tr class="accordion-toggle {{ css_classes }}" data-toggle="collapse" data-target="#recordInfo-{{ record.pk|unlocalize }}">
+  <td>{{ record.request_id }}</td>
   <td>
     <span class="label {% level_css_class record.level %}">{{ record.get_level_display }}</span>
   </td>
