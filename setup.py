@@ -22,7 +22,7 @@ setup(
     install_requires = [
         'Django', 'django-model-utils', 'django-tastypie',
         'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil',
-        'django-log-request-id'
+        'django-log-request-id', 'south'
     ],
     extras_require = {
         'gearman': ['gearman==dev', 'django-gearman-commands==dev'],

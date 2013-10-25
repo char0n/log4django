@@ -46,8 +46,7 @@ class ModelFormatter(BaseFormatter):
             timestamp = make_aware(timestamp, get_default_timezone())
 
         log_record = LogRecord(
-            loggerName=record.name, level=record.levelno,
-            timestamp=timestamp,
+            loggerName=record.name, level=record.levelno, timestamp=timestamp,
             message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
             thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID),
             request_id=record.request_id
