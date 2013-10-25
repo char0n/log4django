@@ -28,7 +28,7 @@ class Migration(SchemaMigration):
         # Adding model 'App'
         db.create_table(u'log4django_app', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('key', self.gf('django.db.models.fields.CharField')(default='b57dcac0-85b9-4bb0-8da6-8754e497030f', unique=True, max_length=36)),
+            ('key', self.gf('django.db.models.fields.CharField')(default='9100f401-106f-433a-9f56-9a596dc9008e', unique=True, max_length=36)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('description', self.gf('django.db.models.fields.TextField')()),
         ))
@@ -48,7 +48,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "('name',)", 'object_name': 'App'},
             'description': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'key': ('django.db.models.fields.CharField', [], {'default': "'6e268727-36a7-4365-8c7d-94c0e8382eb7'", 'unique': 'True', 'max_length': '36'}),
+            'key': ('django.db.models.fields.CharField', [], {'default': "'6607271c-a797-4891-a5f9-9d9db8a71ac9'", 'unique': 'True', 'max_length': '36'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'log4django.logrecord': {

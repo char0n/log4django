@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'LogRecord.request_id'
         db.add_column(u'log4django_logrecord', 'request_id',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.CharField')(db_index=True, max_length=36, null=True, blank=True),
                       keep_default=False)
 
 
@@ -24,7 +24,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "('name',)", 'object_name': 'App'},
             'description': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'key': ('django.db.models.fields.CharField', [], {'default': "'fc44729f-20f0-4bdc-8aab-f15509be470d'", 'unique': 'True', 'max_length': '36'}),
+            'key': ('django.db.models.fields.CharField', [], {'default': "'b3bf8fef-97bc-460b-a4ed-8848bfb3807e'", 'unique': 'True', 'max_length': '36'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'log4django.logrecord': {
@@ -39,7 +39,7 @@ class Migration(SchemaMigration):
             'lineNumber': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True'}),
             'loggerName': ('django.db.models.fields.CharField', [], {'max_length': '225'}),
             'message': ('django.db.models.fields.TextField', [], {}),
-            'request_id': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'request_id': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '36', 'null': 'True', 'blank': 'True'}),
             'thread': ('django.db.models.fields.CharField', [], {'max_length': '225', 'null': 'True', 'blank': 'True'}),
             'timestamp': ('django.db.models.fields.DateTimeField', [], {})
         }
