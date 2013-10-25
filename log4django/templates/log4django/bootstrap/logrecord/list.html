@@ -12,6 +12,10 @@
             <li><h4>{% trans "Filters" %}</h4></li>
             <li class="active">
               <div class="form-group">
+                <label for="search">{% trans "Search" %}:</label>
+                <input type="search" id="search" name="q" class="form-control" value="{{ request.GET.q }}" />
+              </div>
+              <div class="form-group">
                 <select name="app" class="form-control">
                   <optgroup label="{% trans "App" %}">
                     <option value="">{% trans "All Apps" %}</option>

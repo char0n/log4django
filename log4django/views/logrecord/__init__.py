@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
@@ -48,6 +49,14 @@ class LogRecordDetail(TemplateView):
     @method_decorator(authenticate())
     def get(self, request, logrecord_id=None):
         record = get_object_or_404(LogRecord, pk=logrecord_id)
+
+        related = None
+        if record.request_id:
+            related = LogRecord.objects.filter(
+                Q(request_id=record.request_id)
+                & ~Q(pk=record.pk)
+            )
+
         return self.render_to_response(dict(
-            record=record
+            record=record, related=related
         ))

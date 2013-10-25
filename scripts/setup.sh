@@ -35,7 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'log4django'
+    'log4django',
+    'south',
 )
 
 STATIC_URL = '/static/'
