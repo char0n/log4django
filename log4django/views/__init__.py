@@ -15,6 +15,7 @@ def _filter_records(request):
             | Q(fileName__icontains=q)
             | Q(loggerName__icontains=q)
             | Q(exception_message__icontains=q)
+            | Q(request_id__icontains=q)
             | Q(_extra__icontains=q)
         )
     if getvars.get('app'):
