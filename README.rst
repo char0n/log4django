@@ -47,27 +47,50 @@ In your `settings.py` file:
      'log4django.context_processors.log4django'
  )
 
+**Add log_request_id to MIDDLEWARE**
+::
+
+    MIDDLEWARE_CLASSES = (
+        'log_request_id.middleware.RequestIDMiddleware',
+        # ... other middleware goes here
+    )
+
+
 **Configure your logging with log4django appender.**
 ::
 
  LOGGING = {
      'version': 1,
      'disable_existing_loggers': False,
+     'filters': {
+        'request_id': {
+            '()': 'log_request_id.filters.RequestIDFilter'
+        }
+     },
      'handlers': {
          'log4django': {
              'level': 'DEBUG',
-             'class': 'log4django.handlers.ModelHandler' # Synchronous log creations.
+             'class': 'log4django.handlers.ModelHandler', # Synchronous log creations.
+             'filters': ['request_id']
          },
          'log4django_async': {
              'level': 'DEBUG',
-             'class': 'log4django.handlers.GearmanHandler' # Asynchronous log creations, doesn't block.
+             'class': 'log4django.handlers.GearmanHandler', # Asynchronous log creations, doesn't block.
+             'filters': ['request_id']
          }
      },
      'loggers': {
          '': {
              'handlers': ['log4django_async'],
              'level': 'DEBUG'
-         }
+         },
+
+         # South logger needs to be disabled to migrate log4django db
+         'south': {
+            'handlers': ['null'],
+            'level': 'INFO',
+            'propagate': False
+        }
      }
  }
 
@@ -79,6 +102,7 @@ In your `settings.py` file:
      ....your other patterns
      url(r'^', include('log4django.urls', namespace='log4django', app_name='log4django')),
  )
+
 
 Defining namespace and app_name is important. Log4Django uses namespacing internally to avoid
 url name collisions.
