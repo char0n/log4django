@@ -12,6 +12,7 @@ DATABASES = {
 }
 
 MIDDLEWARE_CLASSES = (
+    'log_request_id.middleware.RequestIDMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

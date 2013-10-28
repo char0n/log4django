@@ -10,7 +10,7 @@ class MainScreenTest(TestCase):
         self.client.login(username=TEST_USERNAME, password=TEST_PASSWORD)
 
     def test_context(self):
-        response = self.client.get(reverse('main_screen'))
+        response = self.client.get(reverse('log4django:main_screen'))
         self.assertIn('records', response.context)
         self.assertIn('apps', response.context)
         self.assertIn('loggers', response.context)

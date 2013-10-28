@@ -47,7 +47,7 @@ In your `settings.py` file:
      'log4django.context_processors.log4django'
  )
 
-**Add log_request_id to MIDDLEWARE**
+**Add log_request_id to MIDDLEWARE_CLASSES**
 ::
 
     MIDDLEWARE_CLASSES = (
@@ -85,7 +85,7 @@ In your `settings.py` file:
              'level': 'DEBUG'
          },
 
-         # South logger needs to be disabled to migrate log4django db
+         # South logger needs to be disabled, in order to be able to migrate log4django
          'south': {
             'handlers': ['null'],
             'level': 'INFO',
@@ -149,8 +149,7 @@ Development setup
 -----------------
 ::
 
- $ ./scripts/setup.sh
- $ python manage.py syncdb --noinput --migrate
+ $ make bootstrap
  $ python manage.py test log4django
  $ python manage.py runserver
 
@@ -169,6 +168,10 @@ Tests
 To run the tests, execute one of the following command:::
 
  $ python manage.py test log4django
+
+Or:::
+
+ $ make test
 
 
 Author

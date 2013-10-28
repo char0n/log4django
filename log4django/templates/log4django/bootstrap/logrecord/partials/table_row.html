@@ -38,7 +38,7 @@
           <tr>
             <td>
               #<a href="{% url "log4django:logrecord_detail" record.pk %}">{{ record.pk|unlocalize }}</a></td>
-            <td>{{ record.request_id }}</td>
+            <td>{{ record.request_id|default_if_none:'' }}</td>
             <td>
               {% if record.fileName %}
                 {{ record.fileName }}

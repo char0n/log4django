@@ -1,18 +1,4 @@
 <django-objects version="1.0">
-    <object pk="1" model="auth.user">
-        <field type="CharField" name="password">pbkdf2_sha256$10000$0A101w8PxQS6$yH3mEzJ6oHhtN7ccPD9J/YhShF6EqM6e9jZI8X6/VSo=</field>
-        <field type="DateTimeField" name="last_login">2013-09-29T10:03:09.833281</field>
-        <field type="BooleanField" name="is_superuser">True</field>
-        <field type="CharField" name="username">test</field>
-        <field type="CharField" name="first_name"></field>
-        <field type="CharField" name="last_name"></field>
-        <field type="CharField" name="email"></field>
-        <field type="BooleanField" name="is_staff">True</field>
-        <field type="BooleanField" name="is_active">True</field>
-        <field type="DateTimeField" name="date_joined">2013-09-29T10:03:09.833281</field>
-        <field to="auth.group" name="groups" rel="ManyToManyRel"></field>
-        <field to="auth.permission" name="user_permissions" rel="ManyToManyRel"></field>
-    </object>
     <object pk="1" model="log4django.app">
         <field type="CharField" name="key">698bf47d-7363-4803-972b-ee8d1edb3c5f</field>
         <field type="CharField" name="name">app</field>
@@ -29,6 +15,7 @@
         <field type="CharField" name="thread">139878146262784</field>
         <field type="TextField" name="exception_message"><None></None></field>
         <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="CharField" name="request_id">1f1d9fea-8540-4a4b-84dc-275c3db4c357</field>
         <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 489.95018, "duration_seconds": 0.0004899501800537109, "duration_miliseconds": 0.48995}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
     </object>
     <object pk="31986" model="log4django.logrecord">
@@ -42,6 +29,7 @@
         <field type="CharField" name="thread">139878146262784</field>
         <field type="TextField" name="exception_message"><None></None></field>
         <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="CharField" name="request_id">1f1d9fea-8540-4a4b-84dc-275c3db4c357</field>
         <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 123235.940933, "duration_seconds": 0.12323594093322754, "duration_miliseconds": 123.235941}}</field>
     </object>
     <object pk="31987" model="log4django.logrecord">
@@ -55,6 +43,7 @@
         <field type="CharField" name="thread">139878146262784</field>
         <field type="TextField" name="exception_message"><None></None></field>
         <field type="TextField" name="exception_traceback"><None></None></field>
+        <field type="CharField" name="request_id">1f1d9fea-8540-4a4b-84dc-275c3db4c357</field>
         <field type="TextField" name="_extra">{"performance": {"duration_microseconds": 516.891479, "duration_seconds": 0.0005168914794921875, "duration_miliseconds": 0.516891}, "user": {"ip": "212.80.65.51", "id": "anonymous"}}</field>
     </object>
     <object pk="31988" model="log4django.logrecord">
