@@ -31,6 +31,18 @@ class BaseFormatter(logging.Formatter):
             extra[key] = getattr(record, key)
         return extra
 
+    def _get_data(self, record):
+        timestamp = datetime.fromtimestamp(record.created)
+        if django_settings.USE_TZ:
+            timestamp = make_aware(timestamp, get_default_timezone())
+
+        return dict(
+            loggerName=record.name, level=record.levelno, timestamp=timestamp,
+            message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
+            thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID),
+            request_id=record.request_id
+        )
+
 
 class ModelFormatter(BaseFormatter):
 
@@ -39,18 +51,10 @@ class ModelFormatter(BaseFormatter):
         global LogRecord
         if LogRecord is None:
             from .models import LogRecord
+
         # Basic record data.
+        log_record = LogRecord(**self._get_data(record))
 
-        timestamp = datetime.fromtimestamp(record.created)
-        if django_settings.USE_TZ:
-            timestamp = make_aware(timestamp, get_default_timezone())
-
-        log_record = LogRecord(
-            loggerName=record.name, level=record.levelno, timestamp=timestamp,
-            message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
-            thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID),
-            request_id=record.request_id
-        )
         # Exception data if available.
         if record.exc_info is not None:
             log_record.exception_message = str(record.exc_info[1])
@@ -64,16 +68,14 @@ class GearmanFormatter(BaseFormatter):
 
     def format(self, record):
         # Basic record data.
-        record_dict = dict(
-            loggerName=record.name, level=record.levelno,
-            timestamp=str(make_aware(datetime.fromtimestamp(record.created), get_default_timezone())),
-            message=record.getMessage(), fileName=record.pathname, lineNumber=record.lineno,
-            thread=record.thread, app_id=getattr(record, 'app_id', DEFAULT_APP_ID)
-        )
+        record_dict = self._get_data(record)
+        
         # Exception data if available.
         if record.exc_info is not None:
             record_dict['exception_message'] = str(record.exc_info[1])
             record_dict['exception_traceback'] = self.formatException(record.exc_info)
         # Extra data.
         record_dict['extra'] = self._get_extra(record)
+        record_dict['timestamp'] = record_dict['timestamp'].isoformat()
+
         return jsonpickle.encode(record_dict)
