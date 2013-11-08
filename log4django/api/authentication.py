@@ -30,7 +30,7 @@ class AppAuthentication(Authentication):
         try:
             if not app_key and self.HEADER_NAME in request.META:
                 log.debug('Api authentication header received: %s', request.META[self.HEADER_NAME])
-                app_key = request.META[self.HEADER_NAME].split(':', 1)[1]
+                app_key = request.META[self.HEADER_NAME].split(':', 1)[1].strip()
         except IndexError:
             log.exception('Invalid Authorization header detected: %s', request.META[self.HEADER_NAME])
             return HttpUnauthorized()
