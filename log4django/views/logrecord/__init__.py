@@ -46,7 +46,7 @@ class LogRecordList(TemplateView):
     def get_loggers_names():
         cache_key = 'log4django_loggers_names'
         loggers = cache.get(cache_key)
-        if not loggers:
+        if loggers is None:
             loggers = list(
                 LogRecord.objects.distinct('loggerName').order_by('loggerName').values('loggerName')
             )
