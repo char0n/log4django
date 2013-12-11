@@ -15,7 +15,7 @@ class Command(GearmanWorkerBaseCommand):
     def task_name(self):
         return GERMAN_TASK_NAME
 
-    @transaction.commit_manually(using=settings.DATABASE_ALIAS_LOGGING)
+    @transaction.commit_on_success(using=settings.DATABASE_ALIAS_LOGGING)
     def do_job(self, job_data):
         try:
             payload = json.loads(job_data)
