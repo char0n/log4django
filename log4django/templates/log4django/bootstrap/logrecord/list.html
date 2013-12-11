@@ -29,8 +29,8 @@
                 <select name="logger" class="form-control">
                   <optgroup label="{% trans "Logger" %}">
                     <option value="">{% trans "All Loggers" %}</option>
-                    {% for logger in loggers %}
-                      <option value="{{ logger.loggerName }}"{% if logger.loggerName == request.GET.logger %} selected="selected"{% endif %}>{{ logger.loggerName }}</option>
+                    {% for logger_name in loggers %}
+                      <option value="{{ logger_name }}"{% if logger_name == request.GET.logger %} selected="selected"{% endif %}>{{ logger_name }}</option>
                     {% endfor %}
                   </optgroup>
                 </select>
