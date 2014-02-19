@@ -5,8 +5,12 @@ from django.conf import settings
 
 from django_gearman_commands import GearmanWorkerBaseCommand
 
-from ...settings import GERMAN_TASK_NAME
+from ...settings import GERMAN_TASK_NAME, COMMAND_EXCEPTION_CALLBACK
 from ...pipeline.process_bundle_data import persist_record
+from ...utils import import_string
+
+
+exception_callback = import_string(COMMAND_EXCEPTION_CALLBACK)
 
 
 class Command(GearmanWorkerBaseCommand):
@@ -20,6 +24,6 @@ class Command(GearmanWorkerBaseCommand):
         try:
             payload = json.loads(job_data)
             return persist_record(payload)
-        except Exception, ex:
-            print ex
+        except Exception as ex:
+            exception_callback(ex)
         return False
