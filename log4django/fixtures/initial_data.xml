@@ -4,6 +4,20 @@
         <field type="CharField" name="name">app</field>
         <field type="TextField" name="description">testing app</field>
     </object>
+    <object pk="1" model="auth.user">
+        <field type="CharField" name="password">pbkdf2_sha256$10000$0A101w8PxQS6$yH3mEzJ6oHhtN7ccPD9J/YhShF6EqM6e9jZI8X6/VSo=</field>
+        <field type="DateTimeField" name="last_login">2013-09-29T10:03:09.833281</field>
+        <field type="BooleanField" name="is_superuser">True</field>
+        <field type="CharField" name="username">test</field>
+        <field type="CharField" name="first_name"></field>
+        <field type="CharField" name="last_name"></field>
+        <field type="CharField" name="email"></field>
+        <field type="BooleanField" name="is_staff">True</field>
+        <field type="BooleanField" name="is_active">True</field>
+        <field type="DateTimeField" name="date_joined">2013-09-29T10:03:09.833281</field>
+        <field to="auth.group" name="groups" rel="ManyToManyRel"></field>
+        <field to="auth.permission" name="user_permissions" rel="ManyToManyRel"></field>
+    </object>
     <object pk="31985" model="log4django.logrecord">
         <field to="log4django.app" name="app" rel="ManyToOneRel">1</field>
         <field type="CharField" name="loggerName">catalogue.views.home_screen</field>
