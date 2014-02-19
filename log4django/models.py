@@ -3,9 +3,12 @@ import logging
 import json
 
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from model_utils import Choices
+
+
+logger = logging.getLogger(__file__)
 
 
 class LogRecord(models.Model):
@@ -37,7 +40,10 @@ class LogRecord(models.Model):
 
     @property
     def extra(self):
-        return json.loads(self._extra)
+        try:
+            return json.loads(self._extra)
+        except ValueError:
+            logger.error('Error while loading JSON:\n{0}'.format(self._extra))
 
     @extra.setter
     def extra(self, data):
