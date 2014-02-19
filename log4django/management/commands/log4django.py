@@ -41,4 +41,3 @@ class Command(GearmanWorkerBaseCommand):
             self.exiting()
 
         return False
-

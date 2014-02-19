@@ -16,4 +16,4 @@ PERSISTATION_PIPELINE = getattr(django_settings, 'LOG4DJANGO_PERSISTATION_PIPELI
 ))
 CSV_EXPORT_EXTRA_JSON_PATHS = getattr(django_settings, 'LOG4DJANGO_CSV_EXPORT_EXTRA_JSON_PATHS', tuple())
 CSV_DOWNLOAD_FILE_NAME = getattr(django_settings, 'LOG4DJANGO_CSV_DOWNLOAD_FILE_NAME', 'log4django.csv')
-COMMAND_EXCEPTION_CALLBACK = getattr(django_settings, 'LOG4DJANGO_COMMAND_EXCEPTION_CALLBACK', 'log4django.callbacks.exception_callback')
+COMMAND_EXCEPTION_CALLBACK = getattr(django_settings, 'LOG4DJANGO_COMMAND_EXCEPTION_CALLBACK', 'log4django.callbacks.exception_callback_print')
