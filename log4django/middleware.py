@@ -14,4 +14,4 @@ class Log4DjangoAuthenticationMiddleware(object):
                 module = import_module(module_str)
                 authenticator = getattr(module, authenticator_str)
                 if not authenticator(request):
-                    return HttpResponse('Unathorized', status=401)
+                    return HttpResponse('Unauthorized', status=401)
