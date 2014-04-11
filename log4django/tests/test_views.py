@@ -5,6 +5,7 @@ from . import TEST_USERNAME, TEST_PASSWORD
 
 
 class MainScreenTest(TestCase):
+    fixtures = ['initial_data.xml']
 
     def setUp(self):
         self.client.login(username=TEST_USERNAME, password=TEST_PASSWORD)

@@ -20,7 +20,7 @@ setup(
     packages=find_packages('.'),
     include_package_data=True,
     install_requires = [
-        'Django', 'django-model-utils', 'django-tastypie',
+        'Django==1.6.2', 'django-model-utils', 'django-tastypie',
         'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil',
         'django-log-request-id', 'south'
     ],

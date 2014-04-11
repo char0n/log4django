@@ -5,7 +5,7 @@
         <field type="TextField" name="description">testing app</field>
     </object>
     <object pk="1" model="auth.user">
-        <field type="CharField" name="password">pbkdf2_sha256$10000$0A101w8PxQS6$yH3mEzJ6oHhtN7ccPD9J/YhShF6EqM6e9jZI8X6/VSo=</field>
+        <field type="CharField" name="password">pbkdf2_sha256$12000$9pBUQ9hKCqdw$HmaKL+IEQbUsNqXKjMnLmIzsvZN+Fj0ebcwJwZI3rXc=</field>
         <field type="DateTimeField" name="last_login">2013-09-29T10:03:09.833281</field>
         <field type="BooleanField" name="is_superuser">True</field>
         <field type="CharField" name="username">test</field>
