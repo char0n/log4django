@@ -1,7 +1,7 @@
 {% load static from staticfiles %}{% load i18n %}{% load l10n %}{% load log4django %}<!DOCTYPE html>
 <html>
   <head>
-    <title>{{ PAGE_TITLE }}</title>
+    <title>{{ LOG4DJANGO_PAGE_TITLE }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{% static "log4django/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
@@ -17,7 +17,7 @@
     <div id="navbar" class="navbar navbar-default navbar-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="{% url "log4django:logrecord_list" %}">{{ PAGE_TITLE }}</a>
+          <a class="navbar-brand" href="{% url "log4django:logrecord_list" %}">{{ LOG4DJANGO_PAGE_TITLE }}</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
