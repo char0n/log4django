@@ -20,7 +20,7 @@ setup(
     packages=find_packages('.'),
     include_package_data=True,
     install_requires = [
-        'Django==1.6.2', 'django-model-utils', 'django-tastypie',
+        'Django', 'django-model-utils', 'django-tastypie',
         'jsonpath', 'jsonpickle', 'mimeparse', 'python-dateutil',
         'django-log-request-id', 'south'
     ],
@@ -30,7 +30,7 @@ setup(
     },
     platforms='any',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
