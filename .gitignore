@@ -3,3 +3,7 @@
 /test.db
 /dist
 /log4django.egg-info
+
+.idea
+*.pyc
+*~

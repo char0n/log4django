@@ -21,7 +21,7 @@ class LogRecord(models.Model):
         (logging.CRITICAL, 'CRITICAL', _('CRITICAL'))
     )
 
-    app = models.ForeignKey('App', related_name='records')
+    app = models.ForeignKey('App', related_name='records', null=True)
     loggerName = models.CharField(max_length=225)
     level = models.PositiveSmallIntegerField(choices=LEVEL, default=LEVEL.NOTSET)
     timestamp = models.DateTimeField()
